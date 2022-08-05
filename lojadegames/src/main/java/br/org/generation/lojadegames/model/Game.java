@@ -22,7 +22,6 @@ public class Game {
 	private Long id;
 	
 	@NotNull
-	@Size(max = 255)
 	private Float preco;
 	
 	@NotBlank

@@ -27,7 +27,7 @@ import br.org.generation.lojadegames.repository.GameRepository;
 
 
 @RestController
-@RequestMapping("tb_games")
+@RequestMapping("/games")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class GameController {
 	
