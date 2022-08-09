@@ -25,7 +25,7 @@ import com.blogpessoal.model.Tema;
 import com.blogpessoal.repository.TemaRepository;
 
 @RestController
-@RequestMapping("/tema")
+@RequestMapping("/temas")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class TemaController {
 
@@ -45,7 +45,7 @@ public class TemaController {
 		
 	}
 	@GetMapping("/descricao/{descricao}")
-	public ResponseEntity<List<Tema>> getBydescricao(@PathVariable String descricao){
+	public ResponseEntity<List<Tema>> getByDescricao(@PathVariable String descricao){
 		return ResponseEntity.ok(temaRepository.findAllByDescricaoContainingIgnoreCase(descricao));
 	}
 	@PostMapping
