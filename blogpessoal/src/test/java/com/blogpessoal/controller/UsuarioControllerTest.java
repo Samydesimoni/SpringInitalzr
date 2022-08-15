@@ -40,7 +40,7 @@ package com.blogpessoal.controller;
 		public void deveCriarUmUsuario() {
 
 			HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(new Usuario(0L, 
-				"Paulo Antunes", "https://i.imgur.com/FETvs2O.jpg", "paulo_antunes@email.com.br", "13465278"));
+				"Paulo Antunes", "paulo_antunes@email.com.br", "13465278", "https://i.imgur.com/FETvs2O.jpg"));
 
 			ResponseEntity<Usuario> resposta = testRestTemplate
 				.exchange("/usuarios/cadastrar", HttpMethod.POST, requisicao, Usuario.class);
@@ -57,10 +57,10 @@ package com.blogpessoal.controller;
 		public void naoDeveDuplicarUsuario() {
 
 			usuarioService.cadastrarUsuario(new Usuario(0L, 
-				"Maria da Silva", "https://i.imgur.com/NtyGneo.jpg", "maria_silva@email.com.br", "13465278"));
+				"Maria da Silva", "maria_silva@email.com.br", "13465278", "https://i.imgur.com/NtyGneo.jpg"));
 
 			HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(new Usuario(0L, 
-				"Maria da Silva", "https://i.imgur.com/NtyGneo.jpg", "maria_silva@email.com.br", "13465278"));
+				"Maria da Silva", "maria_silva@email.com.br", "13465278", "https://i.imgur.com/NtyGneo.jpg"));
 
 			ResponseEntity<Usuario> resposta = testRestTemplate
 				.exchange("/usuarios/cadastrar", HttpMethod.POST, requisicao, Usuario.class);
@@ -74,10 +74,10 @@ package com.blogpessoal.controller;
 		public void deveAtualizarUmUsuario() {
 
 			Optional<Usuario> usuarioCreate = usuarioService.cadastrarUsuario(new Usuario(0L, 
-				"Juliana Andrews", "https://i.imgur.com/yDRVeK7.jpg", "juliana_andrews@email.com.br", "juliana123"));
+				"Juliana Andrews", "juliana_andrews@email.com.br", "juliana123", "https://i.imgur.com/yDRVeK7.jpg"));
 
 			Usuario usuarioUpdate = new Usuario(usuarioCreate.get().getId(), 
-				"Juliana Andrews Ramos", "https://i.imgur.com/T12NIp9.jpg", "juliana_ramos@email.com.br", "juliana123");
+				"Juliana Andrews Ramos", "juliana_ramos@email.com.br", "juliana123", "https://i.imgur.com/T12NIp9.jpg");
 			
 			HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(usuarioUpdate);
 
@@ -97,10 +97,10 @@ package com.blogpessoal.controller;
 		public void deveMostrarTodosUsuarios() {
 
 			usuarioService.cadastrarUsuario(new Usuario(0L, 
-				"Sabrina Sanches", "https://i.imgur.com/EcJG8kB.jpg", "sabrina_sanches@email.com.br", "sabrina123"));
+				"Sabrina Sanches", "sabrina_sanches@email.com.br", "sabrina123", "https://i.imgur.com/EcJG8kB.jpg"));
 			
 			usuarioService.cadastrarUsuario(new Usuario(0L, 
-				"Ricardo Marques", "https://i.imgur.com/Sk5SjWE.jpg", "ricardo_marques@email.com.br", "ricardo123"));
+				"Ricardo Marques", "ricardo_marques@email.com.br", "ricardo123", "https://i.imgur.com/Sk5SjWE.jpg"));
 
 			ResponseEntity<String> resposta = testRestTemplate
 				.withBasicAuth("root", "root")
